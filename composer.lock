@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "80a151a9cb5b1c59d5c7b60629116bd4",
+    "content-hash": "743429cedc8dbf0307c5d39e428843f6",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -87,17 +87,73 @@
             "time": "2018-03-08T22:51:35+00:00"
         },
         {
-            "name": "baopham/dynamodb",
-            "version": "4.3.0",
+            "name": "aws/aws-sdk-php-laravel",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/baopham/laravel-dynamodb.git",
-                "reference": "b022954e394f675ef050ad56b71748787548fb4b"
+                "url": "https://github.com/aws/aws-sdk-php-laravel.git",
+                "reference": "3b946892d493b91b4920ec4facc4a0ad7195fb86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baopham/laravel-dynamodb/zipball/b022954e394f675ef050ad56b71748787548fb4b",
-                "reference": "b022954e394f675ef050ad56b71748787548fb4b",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php-laravel/zipball/3b946892d493b91b4920ec4facc4a0ad7195fb86",
+                "reference": "3b946892d493b91b4920ec4facc4a0ad7195fb86",
+                "shasum": ""
+            },
+            "require": {
+                "aws/aws-sdk-php": "~3.0",
+                "illuminate/support": "~5.1",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "suggest": {
+                "laravel/framework": "To test the Laravel bindings",
+                "laravel/lumen-framework": "To test the Lumen bindings"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Aws\\Laravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Amazon Web Services",
+                    "homepage": "http://aws.amazon.com"
+                }
+            ],
+            "description": "A simple Laravel 5 service provider for including the AWS SDK for PHP.",
+            "homepage": "http://aws.amazon.com/sdkforphp2",
+            "keywords": [
+                "amazon",
+                "aws",
+                "dynamodb",
+                "ec2",
+                "laravel",
+                "laravel 5",
+                "s3",
+                "sdk"
+            ],
+            "time": "2016-01-18T06:57:07+00:00"
+        },
+        {
+            "name": "baopham/dynamodb",
+            "version": "4.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baopham/laravel-dynamodb.git",
+                "reference": "7a23d833669649a5016ac11796bead239e3a611e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baopham/laravel-dynamodb/zipball/7a23d833669649a5016ac11796bead239e3a611e",
+                "reference": "7a23d833669649a5016ac11796bead239e3a611e",
                 "shasum": ""
             },
             "require": {
@@ -137,7 +193,7 @@
                 "dynamodb",
                 "laravel"
             ],
-            "time": "2018-02-08T13:25:34+00:00"
+            "time": "2018-03-16T16:59:37+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1325,6 +1381,39 @@
                 "shell"
             ],
             "time": "2017-12-28T16:14:16+00:00"
+        },
+        {
+            "name": "quankim/laravel-dynamodb-migrations",
+            "version": "2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/quanvhframgia/laravel-dynamodb-migrations.git",
+                "reference": "898f4aba47aa1488bba943cd691140f50f6a976c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/quanvhframgia/laravel-dynamodb-migrations/zipball/898f4aba47aa1488bba943cd691140f50f6a976c",
+                "reference": "898f4aba47aa1488bba943cd691140f50f6a976c",
+                "shasum": ""
+            },
+            "require": {
+                "aws/aws-sdk-php-laravel": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "QuanKim\\LaravelDynamoDBMigrations\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Vo Hong Quan",
+                    "email": "vo.hong.quan@framgia.com"
+                }
+            ],
+            "description": "Create Migrations (version control) for DynamoDB",
+            "time": "2017-07-10T06:44:54+00:00"
         },
         {
             "name": "ramsey/uuid",

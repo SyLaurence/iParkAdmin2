@@ -17,6 +17,7 @@ class CreateParkInfosTable extends Migration
             $table->float('payment');
             $table->text('entryimg');
             $table->text('exitimg');
+            $table->text('receiptnum');
             $table->integer('user_info_id')->references('id')->on('user_info');
             $table->timestamps();
         });

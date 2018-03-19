@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\UserInfo;
+use App\user_info;
 use App\UserLevel;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = UserInfo::all();
-        $levels = UserLevel::all();
-        return view('User.user',compact('users','levels'));
+        $users = user_info::all()->first()->park_id;
+        return $users;
+        //$levels = UserLevel::all();
+        //return view('User.user',compact('users','levels'));
     }
 
     public function add(Request $request){
