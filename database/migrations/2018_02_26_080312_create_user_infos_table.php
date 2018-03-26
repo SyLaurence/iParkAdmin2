@@ -18,9 +18,7 @@ class CreateUserInfosTable extends Migration
             $table->text('password');
             $table->string('fname');
             $table->string('lname');
-            $table->text('email');
-            $table->text('contact_no');
-            $table->integer('user_level_id')->references('id')->on('user_level');
+            $table->string('privilege');
             $table->softDeletes();
             $table->timestamps();
         });

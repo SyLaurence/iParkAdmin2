@@ -8,12 +8,9 @@ use BaoPham\DynamoDb\DynamoDbModel;
 
 class user_info extends DynamoDbModel
 {
-	protected $table = 'ipark-mobilehub-2061022867-park_info';
+
+	protected $table = 'ipark-mobilehub-2061022867-admin_info';
     //use SoftDeletes;
     //protected $dates = ['deleted_at'];
-
-    // public function userlevel(){
-    // 	return $this->hasMany('App\UserLevel'); 
-    // }
 
 }

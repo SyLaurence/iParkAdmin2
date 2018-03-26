@@ -14,9 +14,13 @@ class CreateParkInfosTable extends Migration
     {
         Schema::create('park_infos', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('payment');
+            $table->float('load_consumed');
             $table->text('entryimg');
             $table->text('exitimg');
+            //entrydate
+            //exitdate
+            //entryteminal_id
+            //exitterminal_id
             $table->text('receiptnum');
             $table->integer('user_info_id')->references('id')->on('user_info');
             $table->timestamps();

@@ -138,9 +138,9 @@
                     <li>
                         <a href="/Terminal" ><i class="fa fa-train fa-fw"></i> Terminals</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="/Rate" ><i class="fa fa-dollar fa-fw"></i> Rates</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="/User" ><i class="fa fa-group fa-fw"></i> Users</a>
                     </li>
@@ -148,7 +148,7 @@
                         <a href="#" ><i class="fa fa-list-ul fa-fw"></i> Search</a>
                     </li>
                     <li>
-                        <a href="#" ><i class="fa fa-file-text fa-fw"></i> Reports</a>
+                        <a href="/Report" ><i class="fa fa-file-text fa-fw"></i> Reports</a>
                     </li>
                     <!-- <li>
                         <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>

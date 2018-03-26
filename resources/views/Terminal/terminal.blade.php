@@ -47,7 +47,7 @@
                     Inactive
                   @endif
                 </td>
-                <td><input type="button" value="Edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{$terminal->id}}"/>&nbsp;<input type="button" value="Delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$terminal->id}}""/></td>
+                <td><input type="button" value="Edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{$terminal->terminal_id}}"/>&nbsp;<input type="button" value="Delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$terminal->terminal_id}}""/></td>
             </tr>
             @endforeach
         </tbody>
@@ -114,10 +114,10 @@
 <div id="editModalDiv">
   
   @foreach($terminals as $terminal)
-  <input type="text" id="txtTemp{{$terminal->id}}" value="{{$terminal->name}}" hidden/>
+  <input type="text" id="txtTemp{{$terminal->terminal_id}}" value="{{$terminal->name}}" hidden/>
 
   <!-- Modal Edit -->
-  <div id="editModal{{$terminal->id}}" class="modal fade" role="dialog">
+  <div id="editModal{{$terminal->terminal_id}}" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
@@ -133,25 +133,25 @@
                       <tr style="height: 40px">
                           <td style="width: 35px"></td>
                           <td style="width: 175px"><label>Name: </label></td>
-                          <td style="width: 175px"><input type="text" class="form-control" id="txtName{{$terminal->id}}" value="{{$terminal->name}}"/></td>
-                          <td>&nbsp;<label class="text text-danger" id="lblExist{{$terminal->id}}" hidden>*Name already used.</label>
-                            <label class="text text-success" id="lblSuccess{{$terminal->id}}" hidden>Name is available.</label></td>
+                          <td style="width: 175px"><input type="text" class="form-control" id="txtName{{$terminal->terminal_id}}" value="{{$terminal->name}}"/></td>
+                          <td>&nbsp;<label class="text text-danger" id="lblExist{{$terminal->terminal_id}}" hidden>*Name already used.</label>
+                            <label class="text text-success" id="lblSuccess{{$terminal->terminal_id}}" hidden>Name is available.</label></td>
                       </tr>
                       <tr style="height: 40px">
                           <td style="width: 35px"></td>
                           <td style="width: 175px"><label>Computer Name: </label></td>
-                          <td style="width: 175px"><input type="text" class="form-control " id="txtComp{{$terminal->id}}" value="{{$terminal->comp_name}}"/></td>
+                          <td style="width: 175px"><input type="text" class="form-control " id="txtComp{{$terminal->terminal_id}}" value="{{$terminal->comp_name}}"/></td>
                       </tr>
                       <tr style="height: 40px">
                           <td style="width: 35px"></td>
                           <td style="width: 175px"><label>IP Address: </label></td>
-                          <td style="width: 175px"><input type="text" class="form-control" id="txtIp{{$terminal->id}}" value="{{$terminal->ipadd}}" /></td>
+                          <td style="width: 175px"><input type="text" class="form-control" id="txtIp{{$terminal->terminal_id}}" value="{{$terminal->ipadd}}" /></td>
                       </tr>
                       <tr style="height: 40px">
                           <td style="width: 35px"></td>
                           <td style="width: 175px"><label>Type: </label></td>
                           <td style="width: 175px">
-                            <select class="form-control" id="txtType{{$terminal->id}}">
+                            <select class="form-control" id="txtType{{$terminal->terminal_id}}">
                               @if($terminal->type == 1)
                                 <option value="1" selected="selected">Entry</option>
                                 <option value="0">Exit</option>
@@ -166,7 +166,7 @@
                           <td style="width: 35px"></td>
                           <td style="width: 175px"><label>Loop Status: </label></td>
                           <td style="width: 175px">
-                            <select class="form-control" id="txtLoop{{$terminal->id}}">
+                            <select class="form-control" id="txtLoop{{$terminal->terminal_id}}">
                               @if($terminal->loop_status == 1)
                                 <option value="1" selected="selected">Active</option>
                                 <option value="0">Inactive</option>
@@ -184,7 +184,7 @@
         </div>
         <!-- Modal Body-->
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" id="btnUpdate{{$terminal->id}}" onclick="edit({{$terminal->id}});">Update</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="btnUpdate{{$terminal->terminal_id}}" onclick="edit({{$terminal->terminal_id}});">Update</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" id="btnClose">Close</button>
         </div>
       </div>
@@ -195,7 +195,7 @@
 
 
   <!-- Modal Delete -->
-  <div id="deleteModal{{$terminal->id}}" class="modal fade" role="dialog">
+  <div id="deleteModal{{$terminal->terminal_id}}" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
@@ -215,7 +215,7 @@
         </div>
         <!-- Modal Body-->
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="del({{$terminal->id}});">Confirm</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="del({{$terminal->terminal_id}});">Confirm</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" id="btnClose">Cancel</button>
         </div>
       </div>
@@ -270,36 +270,36 @@
   @foreach($terminals as $terminal)
     setInterval(function(){ 
     var ctr = 0;
-    var rname = $("#txtName{{$terminal->id}}").val();
+    var rname = $("#txtName{{$terminal->terminal_id}}").val();
     var table = document.getElementById('tblTerminal');
     for (var r = 1, n = table.rows.length; r < n; r++) {
-      if(rname==table.rows[r].cells[0].innerHTML && rname != $("#txtTemp{{$terminal->id}}").val()){
+      if(rname==table.rows[r].cells[0].innerHTML && rname != $("#txtTemp{{$terminal->terminal_id}}").val()){
         ctr++;
       }
     }
 
     if(rname){
       if(ctr > 0){
-        document.getElementById("txtName{{$terminal->id}}").style.backgroundColor = "salmon";
-        document.getElementById("lblExist{{$terminal->id}}").hidden = false;
-        document.getElementById("lblSuccess{{$terminal->id}}").hidden = true;
-        document.getElementById("btnUpdate{{$terminal->id}}").disabled = true;
+        document.getElementById("txtName{{$terminal->terminal_id}}").style.backgroundColor = "salmon";
+        document.getElementById("lblExist{{$terminal->terminal_id}}").hidden = false;
+        document.getElementById("lblSuccess{{$terminal->terminal_id}}").hidden = true;
+        document.getElementById("btnUpdate{{$terminal->terminal_id}}").disabled = true;
       } else{
-        document.getElementById("txtName{{$terminal->id}}").style.backgroundColor = "white";
-        document.getElementById("lblExist{{$terminal->id}}").hidden = true;
-        document.getElementById("lblSuccess{{$terminal->id}}").hidden = false;
-        document.getElementById("btnUpdate{{$terminal->id}}").disabled = false;
+        document.getElementById("txtName{{$terminal->terminal_id}}").style.backgroundColor = "white";
+        document.getElementById("lblExist{{$terminal->terminal_id}}").hidden = true;
+        document.getElementById("lblSuccess{{$terminal->terminal_id}}").hidden = false;
+        document.getElementById("btnUpdate{{$terminal->terminal_id}}").disabled = false;
       }
     } else {
-      document.getElementById("lblExist{{$terminal->id}}").hidden = true;
-      document.getElementById("lblSuccess{{$terminal->id}}").hidden = true;
-      document.getElementById("btnUpdate{{$terminal->id}}").disabled = true;
+      document.getElementById("lblExist{{$terminal->terminal_id}}").hidden = true;
+      document.getElementById("lblSuccess{{$terminal->terminal_id}}").hidden = true;
+      document.getElementById("btnUpdate{{$terminal->terminal_id}}").disabled = true;
     }
 
-    if($("#txtName{{$terminal->id}}").val() && $("#txtComp{{$terminal->id}}").val() && $("#txtIp{{$terminal->id}}").val() && $("#txtLoop{{$terminal->id}}").val() && $("#txtType{{$terminal->id}}").val() && ctr == 0){
-      document.getElementById("btnUpdate{{$terminal->id}}").disabled = false;
+    if($("#txtName{{$terminal->terminal_id}}").val() && $("#txtComp{{$terminal->terminal_id}}").val() && $("#txtIp{{$terminal->terminal_id}}").val() && $("#txtLoop{{$terminal->terminal_id}}").val() && $("#txtType{{$terminal->terminal_id}}").val() && ctr == 0){
+      document.getElementById("btnUpdate{{$terminal->terminal_id}}").disabled = false;
     } else {
-      document.getElementById("btnUpdate{{$terminal->id}}").disabled = true;
+      document.getElementById("btnUpdate{{$terminal->terminal_id}}").disabled = true;
     }
 
   }, 100);

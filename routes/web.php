@@ -36,5 +36,9 @@ Route::resource('Rate','RateController');
 	Route::get('User','UserController@index');
 	Route::get('User/add/{obj}','UserController@add');
 	Route::get('User/toEdit/{obj}','UserController@toEdit');
-	Route::get('User/delete/{obj}','User@delete');
+	Route::get('User/delete/{obj}','UserController@delete');
+	Route::get('User/priv/{obj}','UserController@priv');
+
+	Route::get('Report','ReportController@index');
+	Route::get('Report/print/{from}/{to}/{id}','ReportController@printPDF');
 
