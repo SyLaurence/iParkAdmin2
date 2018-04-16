@@ -13,14 +13,18 @@
 
 
 // Login
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','LoginController@index');
+Route::get('check/{obj}','LoginController@check');
+Route::get('logout','LoginController@logout');
 
 
 // Dashboard
 Route::get('/home', function () {
     return view('home');
+});
+
+Route::get('/search', function () {
+    return view('search');
 });
 
 Route::resource('Rate','RateController');
@@ -32,6 +36,7 @@ Route::resource('Rate','RateController');
 	Route::get('Terminal/add/{obj}','TerminalController@add');
 	Route::get('Terminal/toEdit/{obj}','TerminalController@toEdit');
 	Route::get('Terminal/delete/{obj}','TerminalController@delete');
+	Route::get('SelectTerminal','TerminalController@getTerminal');
 
 	Route::get('User','UserController@index');
 	Route::get('User/add/{obj}','UserController@add');
@@ -41,4 +46,5 @@ Route::resource('Rate','RateController');
 
 	Route::get('Report','ReportController@index');
 	Route::get('Report/print/{from}/{to}/{id}','ReportController@printPDF');
+	Route::get('Search/{obj}','ReportController@search');
 

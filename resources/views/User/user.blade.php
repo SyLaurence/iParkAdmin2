@@ -31,7 +31,7 @@
                 <td>{{$user->username}}</td>
                 <td>{{$user->fname}}</td>
                 <td>{{$user->lname}}</td>
-                <td><input type="button" value="Privilege" class="btn btn-success" data-toggle="modal" data-target="#privModal{{$user->admin_id}}"/>&nbsp;<input type="button" value="Edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{$user->admin_id}}"/>&nbsp;<input type="button" value="Delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$user->admin_id}}""/></td>
+                <td><input type="button" value="Privilege" class="btn btn-success" data-toggle="modal" data-target="#privModal{{$user->id}}"/>&nbsp;<input type="button" value="Edit" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{$user->id}}"/>&nbsp;<input type="button" value="Delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$user->id}}""/></td>
             </tr>
             @endforeach
         </tbody>
@@ -104,10 +104,10 @@
 <div id="editModalDiv">
   
   @foreach($users as $user)
-  <input type="text" id="txtTemp{{$user->admin_id}}" value="{{$user->name}}" hidden/>
+  <input type="text" id="txtTemp{{$user->id}}" value="{{$user->name}}" hidden/>
 
   <!-- Modal Edit -->
-  <div id="editModal{{$user->admin_id}}" class="modal fade" role="dialog">
+  <div id="editModal{{$user->id}}" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
@@ -123,36 +123,36 @@
                       <tr style="height: 40px">
                         <td style="width: 35px"></td>
                         <td style="width: 175px"><label>Username: </label></td>
-                        <td style="width: 175px"><input type="text" class="form-control namecode" value="{{$user->username}}" id="txtUName{{$user->admin_id}}" /></td>
-                        <td>&nbsp;<label class="text text-danger" id="lblExist{{$user->admin_id}}" hidden>*Name already used.</label>
-                          <label class="text text-success" id="lblSuccess{{$user->admin_id}}" hidden>Name is available.</label></td>
+                        <td style="width: 175px"><input type="text" class="form-control namecode" value="{{$user->username}}" id="txtUName{{$user->id}}" /></td>
+                        <td>&nbsp;<label class="text text-danger" id="lblExist{{$user->id}}" hidden>*Name already used.</label>
+                          <label class="text text-success" id="lblSuccess{{$user->id}}" hidden>Name is available.</label></td>
                     </tr>
                     <tr style="height: 40px">
                         <td style="width: 35px"></td>
                         <td style="width: 175px"><label>Password: </label></td>
-                        <td style="width: 175px"><input type="password" class="form-control namecode" id="txtPass{{$user->admin_id}}" /></td>
-                        <td>&nbsp;<label class="text text-danger" id="lblNot{{$user->admin_id}}" hidden>*Password did not match.</label>
-                          <label class="text text-success" id="lblMatch{{$user->admin_id}}" hidden>Password Matched.</label></td>
+                        <td style="width: 175px"><input type="password" class="form-control namecode" id="txtPass{{$user->id}}" /></td>
+                        <td>&nbsp;<label class="text text-danger" id="lblNot{{$user->id}}" hidden>*Password did not match.</label>
+                          <label class="text text-success" id="lblMatch{{$user->id}}" hidden>Password Matched.</label></td>
                     </tr>
                     <tr style="height: 40px">
                         <td style="width: 35px"></td>
                         <td style="width: 175px"><label>Comfirm Password: </label></td>
-                        <td style="width: 175px"><input type="password" class="form-control namecode" id="txtCPass{{$user->admin_id}}" /></td>
+                        <td style="width: 175px"><input type="password" class="form-control namecode" id="txtCPass{{$user->id}}" /></td>
                     </tr>
                     <tr style="height: 40px">
                         <td style="width: 35px"></td>
                         <td style="width: 175px"><label>First Name: </label></td>
-                        <td style="width: 175px"><input type="text" class="form-control namecode" value="{{$user->fname}}" id="txtFname{{$user->admin_id}}" /></td>
+                        <td style="width: 175px"><input type="text" class="form-control namecode" value="{{$user->fname}}" id="txtFname{{$user->id}}" /></td>
                     </tr>
                     <tr style="height: 40px">
                         <td style="width: 35px"></td>
                         <td style="width: 175px"><label>Last Name: </label></td>
-                        <td style="width: 175px"><input type="text" class="form-control namecode" value="{{$user->lname}}" id="txtLname{{$user->admin_id}}" /></td>
+                        <td style="width: 175px"><input type="text" class="form-control namecode" value="{{$user->lname}}" id="txtLname{{$user->id}}" /></td>
                     </tr>
                     <!-- <tr style="height: 40px">
                         <td style="width: 35px"></td>
                         <td style="width: 175px"><label>Contact Number: </label></td>
-                        <td style="width: 175px"><input type="text" class="form-control namecode" id="txtCno{{$user->admin_id}}" /></td>
+                        <td style="width: 175px"><input type="text" class="form-control namecode" id="txtCno{{$user->id}}" /></td>
                     </tr> -->
                   </tbody>
               </table>
@@ -161,7 +161,7 @@
         </div>
         <!-- Modal Body-->
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" id="btnUpdate{{$user->admin_id}}" onclick="edit({{$user->admin_id}});">Update</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="btnUpdate{{$user->id}}" onclick="edit({{$user->id}});">Update</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" id="btnClose">Close</button>
         </div>
       </div>
@@ -172,7 +172,7 @@
 
 
   <!-- Modal Delete -->
-  <div id="deleteModal{{$user->admin_id}}" class="modal fade" role="dialog">
+  <div id="deleteModal{{$user->id}}" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
@@ -192,7 +192,7 @@
         </div>
         <!-- Modal Body-->
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="del({{$user->admin_id}});">Confirm</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="del({{$user->id}});">Confirm</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" id="btnClose">Cancel</button>
         </div>
       </div>
@@ -202,14 +202,14 @@
   <!-- Modal Delete -->
 
   <!-- Modal Privilege -->
-  <div id="privModal{{$user->admin_id}}" class="modal fade" role="dialog">
+  <div id="privModal{{$user->id}}" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><span class="fa fa-list-ul"></span>&nbsp;&nbsp;&nbsp;Privileges for user: {{$user->username}}</h4>
+          <h4 class="modal-title"><span class="fa fa-list-ul"></span>&nbsp;&nbsp;&nbsp;Privilege for User: {{$user->username}}</h4>
         </div>
         <!-- Modal Body-->
         <div class="modal-body">
@@ -220,44 +220,44 @@
                 <td width="100px"></td>
                 <td>
                   <label>Dashboard Chart</label><br>
-                  @if(strpos($user->privileges, "Chart1") !== false)
-                  <input type="checkbox" id="chkChart1{{$user->admin_id}}" checked>&nbsp;View Chart 1<br>
+                  @if(strpos($user->privilege, "Chart1") !== false)
+                  <input type="checkbox" id="chkChart1{{$user->id}}" checked>&nbsp;View Chart 1<br>
                   @else
-                  <input type="checkbox" id="chkChart1{{$user->admin_id}}">&nbsp;View Chart 1<br>
+                  <input type="checkbox" id="chkChart1{{$user->id}}">&nbsp;View Chart 1<br>
                   @endif
-                  @if(strpos($user->privileges, "Chart2") !== false)
-                  <input type="checkbox" id="chkChart2{{$user->admin_id}}" checked>&nbsp;View Chart 2<br>
+                  @if(strpos($user->privilege, "Chart2") !== false)
+                  <input type="checkbox" id="chkChart2{{$user->id}}" checked>&nbsp;View Chart 2<br>
                   @else
-                  <input type="checkbox" id="chkChart2{{$user->admin_id}}">&nbsp;View Chart 2<br>
+                  <input type="checkbox" id="chkChart2{{$user->id}}">&nbsp;View Chart 2<br>
                   @endif
-                  @if(strpos($user->privileges, "Chart3") !== false)
-                  <input type="checkbox" id="chkChart3{{$user->admin_id}}" checked>&nbsp;View Chart 3<br>
+                  @if(strpos($user->privilege, "Chart3") !== false)
+                  <input type="checkbox" id="chkChart3{{$user->id}}" checked>&nbsp;View Chart 3<br>
                   @else
-                  <input type="checkbox" id="chkChart3{{$user->admin_id}}">&nbsp;View Chart 3<br>
+                  <input type="checkbox" id="chkChart3{{$user->id}}">&nbsp;View Chart 3<br>
                   @endif
                 </td>
                 <td width="100px"></td>
                 <td>
                   <label>Terminals</label><br>
-                  @if(strpos($user->privileges, "ViewTerm") !== false)
-                  <input type="checkbox" id="chkViewTerm{{$user->admin_id}}" checked>&nbsp;View Terminals<br>
+                  @if(strpos($user->privilege, "ViewTerm") !== false)
+                  <input type="checkbox" id="chkViewTerm{{$user->id}}" checked>&nbsp;View Terminals<br>
                   @else
-                  <input type="checkbox" id="chkViewTerm{{$user->admin_id}}">&nbsp;View Terminals<br>
+                  <input type="checkbox" id="chkViewTerm{{$user->id}}">&nbsp;View Terminals<br>
                   @endif
-                  @if(strpos($user->privileges, "AddTerm") !== false)
-                  <input type="checkbox" id="chkAddTerm{{$user->admin_id}}" checked>&nbsp;Add Terminals<br>
+                  @if(strpos($user->privilege, "AddTerm") !== false)
+                  <input type="checkbox" id="chkAddTerm{{$user->id}}" checked>&nbsp;Add Terminals<br>
                   @else
-                  <input type="checkbox" id="chkAddTerm{{$user->admin_id}}">&nbsp;Add Terminals<br>
+                  <input type="checkbox" id="chkAddTerm{{$user->id}}">&nbsp;Add Terminals<br>
                   @endif
-                  @if(strpos($user->privileges, "EditTerm") !== false)
-                  <input type="checkbox" id="chkEditTerm{{$user->admin_id}}" checked>&nbsp;Edit Terminals<br>
+                  @if(strpos($user->privilege, "EditTerm") !== false)
+                  <input type="checkbox" id="chkEditTerm{{$user->id}}" checked>&nbsp;Edit Terminals<br>
                   @else
-                  <input type="checkbox" id="chkEditTerm{{$user->admin_id}}">&nbsp;Edit Terminals<br>
+                  <input type="checkbox" id="chkEditTerm{{$user->id}}">&nbsp;Edit Terminals<br>
                   @endif
-                  @if(strpos($user->privileges, "DelTerm") !== false)
-                  <input type="checkbox" id="chkDelTerm{{$user->admin_id}}" checked>&nbsp;Delete Terminals<br>
+                  @if(strpos($user->privilege, "DelTerm") !== false)
+                  <input type="checkbox" id="chkDelTerm{{$user->id}}" checked>&nbsp;Delete Terminals<br>
                   @else
-                  <input type="checkbox" id="chkDelTerm{{$user->admin_id}}">&nbsp;Delete Terminals<br>
+                  <input type="checkbox" id="chkDelTerm{{$user->id}}">&nbsp;Delete Terminals<br>
                   @endif
                 </td>
               </tr>
@@ -266,44 +266,44 @@
                 <td width="100px"></td>
                 <td>
                   <label>Search Transactions</label><br>
-                  @if(strpos($user->privileges, "ViewTran") !== false)
-                  <input type="checkbox" id="chkViewTran{{$user->admin_id}}" checked>&nbsp;View Transaction<br>
+                  @if(strpos($user->privilege, "ViewTran") !== false)
+                  <input type="checkbox" id="chkViewTran{{$user->id}}" checked>&nbsp;View Transaction<br>
                   @else
-                  <input type="checkbox" id="chkViewTran{{$user->admin_id}}">&nbsp;View Transaction<br>
+                  <input type="checkbox" id="chkViewTran{{$user->id}}">&nbsp;View Transaction<br>
                   @endif
-                  @if(strpos($user->privileges, "Manual") !== false)
-                  <input type="checkbox" id="chkManual{{$user->admin_id}}" checked>&nbsp;Manual Entry<br>
+                  @if(strpos($user->privilege, "Manual") !== false)
+                  <input type="checkbox" id="chkManual{{$user->id}}" checked>&nbsp;Manual Entry<br>
                   @else
-                  <input type="checkbox" id="chkManual{{$user->admin_id}}">&nbsp;Manual Entry<br>
+                  <input type="checkbox" id="chkManual{{$user->id}}">&nbsp;Manual Entry<br>
                   @endif
-                  @if(strpos($user->privileges, "EditTran") !== false)
-                  <input type="checkbox" id="chkEditTran{{$user->admin_id}}" checked>&nbsp;Edit Transaction<br>
+                  @if(strpos($user->privilege, "EditTran") !== false)
+                  <input type="checkbox" id="chkEditTran{{$user->id}}" checked>&nbsp;Edit Transaction<br>
                   @else
-                  <input type="checkbox" id="chkEditTran{{$user->admin_id}}">&nbsp;Edit Transaction<br>
+                  <input type="checkbox" id="chkEditTran{{$user->id}}">&nbsp;Edit Transaction<br>
                   @endif
                 </td>
                 <td width="100px"></td>
                 <td>
                   <label>Users</label><br>
-                  @if(strpos($user->privileges, "ViewUser") !== false)
-                  <input type="checkbox" id="chkViewUser{{$user->admin_id}}" checked>&nbsp;View Users<br>
+                  @if(strpos($user->privilege, "ViewUser") !== false)
+                  <input type="checkbox" id="chkViewUser{{$user->id}}" checked>&nbsp;View Users<br>
                   @else
-                  <input type="checkbox" id="chkViewUser{{$user->admin_id}}">&nbsp;View Users<br>
+                  <input type="checkbox" id="chkViewUser{{$user->id}}">&nbsp;View Users<br>
                   @endif
-                  @if(strpos($user->privileges, "AddUser") !== false)
-                  <input type="checkbox" id="chkAddUser{{$user->admin_id}}" checked>&nbsp;Add Users<br>
+                  @if(strpos($user->privilege, "AddUser") !== false)
+                  <input type="checkbox" id="chkAddUser{{$user->id}}" checked>&nbsp;Add Users<br>
                   @else
-                  <input type="checkbox" id="chkAddUser{{$user->admin_id}}">&nbsp;Add Users<br>
+                  <input type="checkbox" id="chkAddUser{{$user->id}}">&nbsp;Add Users<br>
                   @endif
-                  @if(strpos($user->privileges, "EditUser") !== false)
-                  <input type="checkbox" id="chkEditUser{{$user->admin_id}}" checked>&nbsp;Edit Users<br>
+                  @if(strpos($user->privilege, "EditUser") !== false)
+                  <input type="checkbox" id="chkEditUser{{$user->id}}" checked>&nbsp;Edit Users<br>
                   @else
-                  <input type="checkbox" id="chkEditUser{{$user->admin_id}}">&nbsp;Edit Users<br>
+                  <input type="checkbox" id="chkEditUser{{$user->id}}">&nbsp;Edit Users<br>
                   @endif
-                  @if(strpos($user->privileges, "DelUser") !== false)
-                  <input type="checkbox" id="chkDelUser{{$user->admin_id}}" checked>&nbsp;Delete Users<br>
+                  @if(strpos($user->privilege, "DelUser") !== false)
+                  <input type="checkbox" id="chkDelUser{{$user->id}}" checked>&nbsp;Delete Users<br>
                   @else
-                  <input type="checkbox" id="chkDelUser{{$user->admin_id}}">&nbsp;Delete Users<br>
+                  <input type="checkbox" id="chkDelUser{{$user->id}}">&nbsp;Delete Users<br>
                   @endif
                 </td>
               </tr>
@@ -312,10 +312,10 @@
                 <td width="100px"></td>
                 <td>
                   <label>Reports</label><br>
-                  @if(strpos($user->privileges, "Report") !== false)
-                  <input type="checkbox" id="chkReport{{$user->admin_id}}" checked>&nbsp;Generate Reports<br>
+                  @if(strpos($user->privilege, "Report") !== false)
+                  <input type="checkbox" id="chkReport{{$user->id}}" checked>&nbsp;Generate Reports<br>
                   @else
-                  <input type="checkbox" id="chkReport{{$user->admin_id}}">&nbsp;Generate Reports<br>
+                  <input type="checkbox" id="chkReport{{$user->id}}">&nbsp;Generate Reports<br>
                   @endif
                 </td>
               </tr>
@@ -325,7 +325,7 @@
         </div>
         <!-- Modal Body-->
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="priv({{$user->admin_id}});">Save</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="priv({{$user->id}});">Save</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" id="btnClose">Cancel</button>
         </div>
       </div>
@@ -430,9 +430,9 @@
   //   }
 
   //   if($("#txtUName{{$users->id}}").val() && $("#txtCno{{$users->id}}").val() && $("txtFname{{$users->id}}").val() && $("txtLname{{$users->id}}").val() && $("#txtType{{$users->id}}").val() && confirmPass == 1 && ctr == 0){
-  //     document.getElementById("btnUpdate{{$user->admin_id}}").disabled = false;
+  //     document.getElementById("btnUpdate{{$user->id}}").disabled = false;
   //   } else {
-  //     document.getElementById("btnUpdate{{$user->admin_id}}").disabled = true;
+  //     document.getElementById("btnUpdate{{$user->id}}").disabled = true;
   //   }
 
   // }, 100);

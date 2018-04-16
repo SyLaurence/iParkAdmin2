@@ -3,40 +3,42 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\user_info;
+use App\UserInfo;
 
 class UserController extends Controller
 {
     public function index()
     {
         
-        $users = user_info::where('is_active', '!=', '0')->where('admin_id','!=','1')->get();
+        //$users = UserInfo::where('is_active', '!=', '0')->where('admin_id','!=','1')->get();
+        //$users = UserInfo::where('id','!=',session()->get('id'))->get();
+        $users = UserInfo::all();
         return view('User.user',compact('users'));
     }
 
     public function add(Request $request){
 
-        $user_id = '';
-        $user = user_info::all();
-        if(empty($user)){
-            $user = '1';
-        } else {
-            $high = '';
-            foreach($user as $use){
-                if($use->admin_id > $high){
-                    $high = $use->admin_id;
-                }
-            }
-            $user_id = (int)$high+1;
-        }
+        // $user_id = '';
+        // $user = UserInfo::all();
+        // if(empty($user)){
+        //     $user = '1';
+        // } else {
+        //     $high = '';
+        //     foreach($user as $use){
+        //         if($use->admin_id > $high){
+        //             $high = $use->admin_id;
+        //         }
+        //     }
+        //     $user_id = (int)$high+1;
+        // }
 
-        $user = new user_info;
-        $user->admin_id = $user_id.'';
+        $user = new UserInfo;
+        //$user->admin_id = $user_id.'';
         $user->fname = $request->user['ufname'];
         $user->username = $request->user['uuname'];
         $user->lname = $request->user['ulname'];
         $user->password = $request->user['upass'];
-        $user->privileges = $request->user['upriv'];
+        $user->privilege = $request->user['upriv'];
         $user->save();
 
         if($request->ajax()){
@@ -45,21 +47,21 @@ class UserController extends Controller
     }
 
     public function toEdit(Request $request){
-        $priv = '';
-        $users = user_info::where('is_active','!=','0')->get();
-        foreach($users as $user){
-            if($user->admin_id == $request->user['uid']){
-                $priv = $user->privileges;
-            }
-        }
+        // $priv = '';
+        // $users = UserInfo::where('is_active','!=','0')->get();
+        // foreach($users as $user){
+        //     if($user->admin_id == $request->user['uid']){
+        //         $priv = $user->privilege;
+        //     }
+        // }
 
-        $user = new user_info;
-        $user->admin_id = $request->user['uid'];
+        $user = UserInfo::find($request->user['uid']);
+        //$user->admin_id = $request->user['uid'];
         $user->username = $request->user['uuname'];
         $user->fname = $request->user['ufname'];
         $user->lname = $request->user['ulname'];
         $user->password = $request->user['upass'];
-        $user->privileges = $priv;
+        //$user->privilege = $priv;
         $user->save();
 
 
@@ -70,23 +72,24 @@ class UserController extends Controller
 
     public function priv(Request $request){
         $priv = $request['priv'];
-        $users = user_info::where('is_active','!=','0')->get();
-        foreach($users as $user){
-            if($user->admin_id == $request['id']){
-                $username = $user->username;
-                $password = $user->password;
-                $lname = $user->lname;
-                $fname = $user->fname;
-            }
-        }
+        // $users = UserInfo::where('is_active','!=','0')->get();
+        // foreach($users as $user){
+        //     if($user->admin_id == $request['id']){
+        //         $username = $user->username;
+        //         $password = $user->password;
+        //         $lname = $user->lname;
+        //         $fname = $user->fname;
+        //     }
+        // }
 
-        $user = new user_info;
-        $user->admin_id = $request['id'];
-        $user->username = $username;
-        $user->fname = $fname;
-        $user->lname = $lname;
-        $user->password = $password;
-        $user->privileges = $priv;
+        // $user = new UserInfo;
+        // $user->admin_id = $request['id'];
+        // $user->username = $username;
+        // $user->fname = $fname;
+        // $user->lname = $lname;
+        // $user->password = $password;
+        $user = UserInfo::find($request['id']);
+        $user->privilege = $priv;
         $user->save();
 
 

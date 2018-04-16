@@ -4,14 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use BaoPham\DynamoDb\DynamoDbModel;
 
-class UserLevel extends Model
+class RateInfo extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-
-    public function userinfo(){
-    	return $this->belongsTo('App\Userinfo');
-    }
-
 }

@@ -16,13 +16,14 @@ class CreateParkInfosTable extends Migration
             $table->increments('id');
             $table->float('load_consumed');
             $table->text('entryimg');
-            $table->text('exitimg');
-            //entrydate
-            //exitdate
+            $table->text('exitimg')->nullable();
+            $table->text('entryterminal');
+            $table->text('exitterminal')->nullable();
+            $table->text('paydate')->nullable();
             //entryteminal_id
             //exitterminal_id
-            $table->text('receiptnum');
-            $table->integer('user_info_id')->references('id')->on('user_info');
+            $table->text('receiptnum')->nullable();
+            $table->string('user_info_id');
             $table->timestamps();
         });
     }

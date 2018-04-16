@@ -65,20 +65,20 @@
                 </span> 
                 <br>
                 <br>
-                <form class="login100-form validate-form flex-sb flex-w">
+                <!-- <form class="login100-form validate-form flex-sb flex-w"> -->
                     <span class="login100-form-title p-b-51">
                         Login
                     </span>
 
                     
                     <div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-                        <input class="input100" type="text" name="username" placeholder="Username">
+                        <input class="input100" type="text" id="uname" name="username" placeholder="Username">
                         <span class="focus-input100"></span>
                     </div>
                     
                     
                     <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-                        <input class="input100" type="password" name="pass" placeholder="Password">
+                        <input class="input100" type="password" id="pass" name="pass" placeholder="Password">
                         <span class="focus-input100"></span>
                     </div>
                     
@@ -96,22 +96,48 @@
                             </a>
                         </div> -->
                     </div>
-
-                    <div class="container-login100-form-btn m-t-17">
-                        <button class="login100-form-btn" onClick="window.location.href='/home';">
+                    <center>
+                        <button class="btn btn-success" onclick="login();">
                             Login
                         </button>
-                    </div>
+                    </center>
 
-                </form>
+                <!-- </form> -->
             </div>
         </div>
     </div>
     
 
-    <div id="dropDownSelect1"></div>
-    
-
-
+    <!-- <div id="dropDownSelect1"></div> -->
 </body>
+<script type="text/javascript">
+    function login(){
+        uname = document.getElementById('uname').value;
+        pass = document.getElementById('pass').value;
+        $(document).ready(function(){
+            // ===================== AJAX ===================== 
+                $.ajaxSetup({
+                  headers:
+                  {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
+                });
+                $.ajax({
+                  url: '/check/obj',
+                  type: 'get',
+                  data: {
+                    uname,
+                    pass,
+                  },
+                  dataType:'json',
+                  success: function(data){
+                    if(data == 1){
+                        window.location.href = '/home';
+                    } else {
+                        window.location.href = '';    
+                    }
+                  }
+                });
+            // ===================== AJAX ===================== 
+        });
+    }
+</script>
 </html>

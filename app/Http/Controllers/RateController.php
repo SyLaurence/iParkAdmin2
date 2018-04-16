@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\rate_info;
+use App\RateInfo;
 
 class RateController extends Controller
 {
@@ -15,9 +15,9 @@ class RateController extends Controller
     public function index()
     {
 
-        $rates = rate_info::find('3');
-        return $rates;
-        //return view('Rate.rate',compact('rates'));
+        $rates = RateInfo::all();
+        //return $rates;
+        return view('Rate.rate',compact('rates'));
     }
 
     /**
@@ -46,7 +46,7 @@ class RateController extends Controller
     public function add(Request $request){
 
         $rate = new RateInfo;
-
+        
         $rate->name = $request->Rate['rname'];
         $rate->rate_code = $request->Rate['rcode'];
         $rate->init_duration = $request->Rate['rinit'];

@@ -105,13 +105,13 @@
             </li> -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <b class="caret"></b>
+                    <i class="fa fa-user fa-fw"></i> {{session()->get('username')}} <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
             </li>
@@ -145,7 +145,7 @@
                         <a href="/User" ><i class="fa fa-group fa-fw"></i> Users</a>
                     </li>
                     <li>
-                        <a href="#" ><i class="fa fa-list-ul fa-fw"></i> Search</a>
+                        <a href="/search" ><i class="fa fa-list-ul fa-fw"></i> Search</a>
                     </li>
                     <li>
                         <a href="/Report" ><i class="fa fa-file-text fa-fw"></i> Reports</a>
