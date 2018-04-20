@@ -60,6 +60,7 @@ class ReportController extends Controller
         for($x = $fr; $x<=$t ;$x++){
             $arrData[$x]['count'] = 0;
             $arrData[$x]['sum'] = 0;
+            $arrData[$x]['end'] = '';
             foreach($parkinfo as $park){
                 if(number_format(date('d',strtotime($park->created_at))) == $x){
                     $arrData[$x]['date'] = date('Y-m-d',strtotime($park->created_at));
