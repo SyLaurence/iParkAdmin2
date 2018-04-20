@@ -16,7 +16,7 @@ class ParkInfoTableSeeder extends Seeder
     	$arrPayDate = array();
     	$arrRec = array();
     	for($x = 0; $x < 50; $x++){
-    		array_push($arrRec,"DM-".($x+1));
+    		array_push($arrRec,"DM-00000000".($x+1));
 	    	if($x <= 29){
 	            array_push($arrStartDate,date("Y-m-d H:i:s",strtotime("now")));
 	            array_push($arrEndDate,date("Y-m-d H:i:s",strtotime("+3 hours")));

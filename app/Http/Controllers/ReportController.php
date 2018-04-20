@@ -67,7 +67,9 @@ class ReportController extends Controller
                     if(empty($arrData[$x]['start'])){
                         $arrData[$x]['start'] = $park->receiptnum;
                     }
-                    $arrData[$x]['end'] = $park->receiptnum;
+                    if(!empty($park->receiptnum)){
+                        $arrData[$x]['end'] = $park->receiptnum;
+                    }   
                     $arrData[$x]['sum'] += $park->load_consumed;
                 }
             }

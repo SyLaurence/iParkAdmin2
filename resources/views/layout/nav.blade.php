@@ -183,8 +183,9 @@
             </div>
 
             <!-- ... Your content goes here ... -->
-            @yield('pageContent')
-
+            <div class="container-fluid">
+                @yield('pageContent')
+            </div>
         </div>
     </div>
 

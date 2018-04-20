@@ -11,8 +11,8 @@ class UserController extends Controller
     {
         
         //$users = UserInfo::where('is_active', '!=', '0')->where('admin_id','!=','1')->get();
-        //$users = UserInfo::where('id','!=',session()->get('id'))->get();
-        $users = UserInfo::all();
+        $users = UserInfo::where('id','!=',session()->get('id'))->get();
+        //$users = UserInfo::all();
         return view('User.user',compact('users'));
     }
 
